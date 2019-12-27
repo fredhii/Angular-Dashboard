@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-doughnut',
@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DoughnutComponent implements OnInit {
 
-  
+  @Input() public doughnutChartLabels: string[] = [];
+  @Input() public doughnutChartData: number[] = [];
+  @Input() public doughnutChartType: string = '';
 
   constructor() { }
 

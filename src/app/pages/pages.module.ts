@@ -4,6 +4,10 @@ import { PagesRouting } from './pages.routes';
 
 import {FormsModule} from '@angular/forms'
 
+// ng2-charts
+import { ChartsModule } from 'ng2-charts';
+import { DoughnutComponent } from '../components/doughnut/doughnut.component'
+
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProgressComponent } from './progress/progress.component';
 import { Graphic1Component } from './graphic1/graphic1.component';
@@ -23,7 +27,8 @@ import { from } from 'rxjs';
         ProgressComponent,
         Graphic1Component,
         PagesComponent,
-        IncreaserComponent
+        IncreaserComponent,
+        DoughnutComponent
     ],
     exports: [
         DashboardComponent,
@@ -34,7 +39,8 @@ import { from } from 'rxjs';
     imports: [
         ShareModule,
         PagesRouting,
-        FormsModule
+        FormsModule,
+        ChartsModule
     ]
 })
 

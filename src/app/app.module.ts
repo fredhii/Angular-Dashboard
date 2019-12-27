@@ -12,14 +12,12 @@ import {PagesModule} from './pages/pages.module'
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './login/register.component';
-import { DoughnutComponent } from './components/doughnut/doughnut.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    DoughnutComponent
   ],
   imports: [
     BrowserModule,
