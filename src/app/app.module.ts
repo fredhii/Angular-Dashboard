@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {FormsModule} from '@angular/forms'
 
 // Routes
 import { AppRoutingModule } from './app-routing.module';
@@ -11,17 +12,20 @@ import {PagesModule} from './pages/pages.module'
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './login/register.component';
+import { DoughnutComponent } from './components/doughnut/doughnut.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    DoughnutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PagesModule
+    PagesModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
