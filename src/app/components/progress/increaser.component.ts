@@ -43,7 +43,7 @@ export class IncreaserComponent implements OnInit {
       this.percentage = 100;
       return;
     }
-    if(this.percentage >= 0 && value < 0){
+    if(this.percentage <= 0 && value < 0){
       this.percentage = 0;
       return;
     }

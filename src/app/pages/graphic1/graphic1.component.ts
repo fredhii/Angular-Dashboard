@@ -25,13 +25,13 @@ export class Graphic1Component implements OnInit {
       labels: ['Yes', 'No'],
       data:  [95, 5],
       type: 'doughnut',
-      leyenda: 'Do you like something x?'
+      leyenda: 'Do you have a crush?'
     },
     grafico4: {
       labels: ['No', 'Yes'],
       data:  [85, 15],
       type: 'doughnut',
-      leyenda: 'Have you seen this before?'
+      leyenda: 'Have you seen a 3D waifu?'
     },
   };
 
