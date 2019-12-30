@@ -18,6 +18,7 @@ import { IncreaserComponent } from '../components/progress/increaser.component';
 //Share Module
 import { ShareModule } from '../share/share.module';
 import { from } from 'rxjs';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
 
 
 
@@ -28,7 +29,8 @@ import { from } from 'rxjs';
         Graphic1Component,
         PagesComponent,
         IncreaserComponent,
-        DoughnutComponent
+        DoughnutComponent,
+        AccountSettingsComponent
     ],
     exports: [
         DashboardComponent,

@@ -9,7 +9,7 @@ export class IncreaserComponent implements OnInit {
 
   @ViewChild('txtProgress', {static: false}) txtProgress: ElementRef;
   @Input('name') leyend: string = 'Leyend';
-  @Input() percentage: number = 50;
+  @Input() percentage = 50;
 
   @Output() increaserValue: EventEmitter<number> = new EventEmitter();
 
@@ -25,11 +25,9 @@ export class IncreaserComponent implements OnInit {
 
     if ( newValue >=100 ){
       this.percentage = 100;
-    }
-    else if ( newValue <=0 ){
+    } else if ( newValue <=0 ){
       this.percentage = 0;
-    }
-    else {
+    } else {
     this.percentage = newValue;
     }
 
@@ -45,7 +43,7 @@ export class IncreaserComponent implements OnInit {
       this.percentage = 100;
       return;
     }
-    if(this.percentage >=0 && value < 0){
+    if(this.percentage >= 0 && value < 0){
       this.percentage = 0;
       return;
     }
