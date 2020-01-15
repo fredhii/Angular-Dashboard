@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
 import { CommonModule, APP_BASE_HREF, LocationStrategy, HashLocationStrategy} from '@angular/common';
 
+// Temporal
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 // Routes
 import { AppRoutingModule } from './app-routing.module';
@@ -29,6 +30,7 @@ import { ServiceModule } from './services/service.module';
     AppRoutingModule,
     PagesModule,
     FormsModule,
+    ReactiveFormsModule,
     ServiceModule
   ],
   providers: [
