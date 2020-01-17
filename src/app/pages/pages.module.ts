@@ -1,25 +1,28 @@
+// ================================================================
+// Imports
+// ================================================================
 import { NgModule } from '@angular/core';
-//Pages Routes
+import { CommonModule } from '@angular/common';
+// Pages Routes
 import { PagesRouting } from './pages.routes';
-
-import {FormsModule} from '@angular/forms'
-
+// Forms
+import {FormsModule} from '@angular/forms';
+// Modules
+import { ShareModule } from '../share/share.module';
+import { PipesModule } from '../pipes/pipes.module';
 // ng2-charts
 import { ChartsModule } from 'ng2-charts';
-import { DoughnutComponent } from '../components/doughnut/doughnut.component'
-
+// Others
+import { DoughnutComponent } from '../components/doughnut/doughnut.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProgressComponent } from './progress/progress.component';
 import { Graphic1Component } from './graphic1/graphic1.component';
 import { PagesComponent } from './pages.component';
-
 import { IncreaserComponent } from '../components/progress/increaser.component';
-
-//Share Module
-import { ShareModule } from '../share/share.module';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -33,7 +36,8 @@ import { RxjsComponent } from './rxjs/rxjs.component';
         DoughnutComponent,
         AccountSettingsComponent,
         PromesasComponent,
-        RxjsComponent
+        RxjsComponent,
+        ProfileComponent
     ],
     exports: [
         DashboardComponent,
@@ -42,10 +46,12 @@ import { RxjsComponent } from './rxjs/rxjs.component';
         PagesComponent
     ],
     imports: [
+        CommonModule,
         ShareModule,
         PagesRouting,
         FormsModule,
-        ChartsModule
+        ChartsModule,
+        PipesModule
     ]
 })
 

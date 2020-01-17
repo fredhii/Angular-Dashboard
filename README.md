@@ -1,3 +1,14 @@
+## Execute project
+
+Start project initializing:
+`npm install`
+
+after that go to 
+`node_modules/sweetalert/typings`
+
+open "sweetalert.d.ts" file and remove
+`const swal: SweetAlert;`
+
 # Adminpro
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
