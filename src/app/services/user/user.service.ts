@@ -113,8 +113,11 @@ export class UserService {
     return this.http.put(url, user)
                     .pipe(map( ( response: any ) => {
 
-                      let userBD: User = response.user;
-                      this.saveStorage( userBD._id, this.token, userBD );
+                      if ( user._id === this.user._id ) {
+                        let userBD: User = response.user;
+                        this.saveStorage( userBD._id, this.token, userBD );
+                      }
+
                       swal('Success', 'User Updated', 'success' );
 
                       return true;
@@ -136,4 +139,27 @@ export class UserService {
         });
 
   }
+
+  // User
+  loadUsers( from: number = 0 ) {
+    let url = URL_SERVICES + '/user?from=' + from;
+    return this.http.get( url );
+  }
+
+  searchUsers( term: string ) {
+    let url = URL_SERVICES + '/search/collection/user/' + term;
+    return this.http.get( url )
+                    .pipe(map((response: any) => response.user));
+  }
+
+  eraseUser( id: string ) {
+    let url = URL_SERVICES + '/user/' + id;
+    url += '?token=' + this.token;
+    return this.http.delete( url )
+                    .pipe(map( response => {
+                      swal('Success', 'User was deleted', 'success');
+                      return true;
+                    }));
+  }
+
 }

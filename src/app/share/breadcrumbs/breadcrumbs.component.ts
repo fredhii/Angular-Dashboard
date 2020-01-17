@@ -13,11 +13,11 @@ export class BreadcrumbsComponent implements OnInit {
   title: string;
 
   constructor( private router: Router,
-    private maintitle: Title,
-    private meta: Meta ) { 
-    
+               private maintitle: Title,
+               private meta: Meta ) {
+
     this.getDataRoute().subscribe( data => {
-      console.log(data);
+      // console.log(data);
       this.title = data.title;
       this.maintitle.setTitle(this.title );
 

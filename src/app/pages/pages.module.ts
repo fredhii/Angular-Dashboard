@@ -13,16 +13,18 @@ import { PipesModule } from '../pipes/pipes.module';
 // ng2-charts
 import { ChartsModule } from 'ng2-charts';
 // Others
-import { DoughnutComponent } from '../components/doughnut/doughnut.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProgressComponent } from './progress/progress.component';
 import { Graphic1Component } from './graphic1/graphic1.component';
 import { PagesComponent } from './pages.component';
-import { IncreaserComponent } from '../components/progress/increaser.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { ProfileComponent } from './profile/profile.component';
+import { UsersComponent } from './users/users.component';
+import { DoughnutComponent } from '../components/doughnut/doughnut.component';
+import { IncreaserComponent } from '../components/progress/increaser.component';
+import { ModalUploadComponent } from '../components/modal-upload/modal-upload.component';
 
 
 
@@ -37,7 +39,9 @@ import { ProfileComponent } from './profile/profile.component';
         AccountSettingsComponent,
         PromesasComponent,
         RxjsComponent,
-        ProfileComponent
+        ProfileComponent,
+        UsersComponent,
+        ModalUploadComponent
     ],
     exports: [
         DashboardComponent,

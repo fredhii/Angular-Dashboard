@@ -11,6 +11,8 @@ import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { LoginGuardService } from '../services/service.index';
 import { ProfileComponent } from './profile/profile.component';
+import { NopagefoundComponent } from '../share/nopagefound/nopagefound.component';
+import { UsersComponent } from './users/users.component';
 
 
 
@@ -27,6 +29,10 @@ const pagesRoutes: Routes = [
       { path: 'account-settings', component: AccountSettingsComponent, data: { title: 'Theme Settings' }},
       { path: 'rxjs', component: RxjsComponent, data: { title: 'RxJs' }},
       { path: 'profile', component: ProfileComponent, data: { title: 'My Profile' }},
+
+      // Maintenance
+      { path: 'user', component: UsersComponent, data: { title: 'User Maintenance' }},
+      { path: '**', component: NopagefoundComponent},
       { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
     ]
   }

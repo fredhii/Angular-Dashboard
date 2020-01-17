@@ -7,15 +7,15 @@ import { UserService } from '../user/user.service'
 })
 export class LoginGuardService implements CanActivate {
 
-  constructor( 
+  constructor(
     public _userService: UserService,
     public router: Router
     ) {}
 
-  canActivate(){
-    
-    if( this._userService.alreadyLogedin() ){
-      console.log('Pass through Guard');
+  canActivate() {
+
+    if ( this._userService.alreadyLogedin() ) {
+      // console.log('Pass through Guard');
       return true;
     } else {
       console.log('Block by Guard');
