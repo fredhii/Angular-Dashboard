@@ -13,6 +13,9 @@ import { LoginGuardService } from '../services/service.index';
 import { ProfileComponent } from './profile/profile.component';
 import { NopagefoundComponent } from '../share/nopagefound/nopagefound.component';
 import { UsersComponent } from './users/users.component';
+import { HospitalComponent } from './hospital/hospital.component';
+import { DoctorsComponent } from './doctors/doctors.component';
+import { DoctorComponent } from './doctors/doctor.component';
 
 
 
@@ -32,6 +35,9 @@ const pagesRoutes: Routes = [
 
       // Maintenance
       { path: 'user', component: UsersComponent, data: { title: 'User Maintenance' }},
+      { path: 'hospital', component: HospitalComponent, data: { title: 'Hospital Maintenance' }},
+      { path: 'doctor', component: DoctorsComponent, data: { title: 'Doctors Maintenance' }},
+      { path: 'doctor/:id', component: DoctorComponent, data: { title: 'Update Doctor' }},
       { path: '**', component: NopagefoundComponent},
       { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
     ]

@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
+  ngOnInit() { 
     init_plugins();
 
     this.form = new FormGroup({
@@ -58,12 +58,12 @@ export class RegisterComponent implements OnInit {
 
   }
 
-  registerUser(){
+  registerUser() {
 
-    if(this.form.invalid){
+    if (this.form.invalid) {
       return;
     }
-    if(!this.form.value.terms) {
+    if (!this.form.value.terms) {
       swal('Important', 'You should accept terms & conditions', 'warning');
       return;
     }
@@ -76,7 +76,7 @@ export class RegisterComponent implements OnInit {
 
     this._userService.createUser( user )
                       .subscribe( response => this.router.navigate(['/login']));
-                      
+
 
   }
 

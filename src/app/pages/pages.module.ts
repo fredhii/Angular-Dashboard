@@ -25,6 +25,9 @@ import { UsersComponent } from './users/users.component';
 import { DoughnutComponent } from '../components/doughnut/doughnut.component';
 import { IncreaserComponent } from '../components/progress/increaser.component';
 import { ModalUploadComponent } from '../components/modal-upload/modal-upload.component';
+import { HospitalComponent } from './hospital/hospital.component';
+import { DoctorsComponent } from './doctors/doctors.component';
+import { DoctorComponent } from './doctors/doctor.component';
 
 
 
@@ -41,7 +44,10 @@ import { ModalUploadComponent } from '../components/modal-upload/modal-upload.co
         RxjsComponent,
         ProfileComponent,
         UsersComponent,
-        ModalUploadComponent
+        ModalUploadComponent,
+        HospitalComponent,
+        DoctorsComponent,
+        DoctorComponent
     ],
     exports: [
         DashboardComponent,

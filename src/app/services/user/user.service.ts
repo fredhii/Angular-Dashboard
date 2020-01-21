@@ -24,12 +24,12 @@ export class UserService {
    }
 
 
-  alreadyLogedin(){
+  alreadyLogedin() {
     return(this.token.length > 5) ? true : false;
   }
 
-  loadStorage(){
-    if( localStorage.getItem('token')){
+  loadStorage() {
+    if ( localStorage.getItem('token')) {
       this.token = localStorage.getItem('token');
       this.user = JSON.parse(localStorage.getItem('user'));
     } else {
@@ -40,15 +40,14 @@ export class UserService {
 
   // Save data in local storage
   saveStorage( id: string, token: string, user: User ) {
-  localStorage.setItem('id', id);
-  localStorage.setItem('token', token);
-  localStorage.setItem('user', JSON.stringify(user));
-
-  this.user = user;
-  this.token = token;
+    localStorage.setItem('id', id);
+    localStorage.setItem('token', token);
+    localStorage.setItem('user', JSON.stringify(user));
+    this.user = user;
+    this.token = token;
   }
 
-  logOut(){
+  logOut() {
     this.user = null;
     this.token = '';
 
@@ -65,7 +64,7 @@ export class UserService {
     let url = URL_SERVICES + '/login/google';
 
     return this.http.post( url, {token} )
-    .pipe(map(( response:any ) => {
+    .pipe(map(( response: any ) => {
       this.saveStorage(response.id, response.token, response.user);
       return true;
     }));
@@ -75,7 +74,7 @@ export class UserService {
   // Login
   login( user: User, rememberme: boolean = false ){
 
-    if (rememberme){
+    if (rememberme) {
       localStorage.setItem('email', user.email);
     } else {
       localStorage.removeItem('email');
@@ -83,10 +82,10 @@ export class UserService {
 
     let url = URL_SERVICES + '/login';
     return this.http.post( url, user )
-    .pipe(map( ( response: any ) =>{
+    .pipe(map( ( response: any ) => {
       this.saveStorage(response.id, response.token, response.user);
       return true;
-    }))
+    }));
   }
 
   // Register

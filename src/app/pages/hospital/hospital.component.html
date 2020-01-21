@@ -1,0 +1,100 @@
+<!-- ================================================ -->
+<!-- Search bar -->
+<!-- ================================================ -->
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <input #input (keyup)="searchHospital( input.value )" type="text" class="form-control" placeholder="Search Hospital...">
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ================================================ -->
+<!-- Loading bar -->
+<!-- ================================================ -->
+<div class="row animated fadeIn" *ngIf="showloadingbar">
+    <div class="col-sm-12">
+        <div class="alert alert-warning text-center">
+            <strong>Loading...</strong>
+            <br>
+            <i class="fa fa-refresh fa-spin fa-2x"></i>
+            <br>
+            <span>Please wait</span>
+        </div>
+    </div>
+</div>
+<!-- ================================================ -->
+<!-- Table -->
+<!-- ================================================ -->
+<div class="row animated fadeIn" *ngIf="!showloadingbar">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <!-- Subtitle -->
+                <div class="d-flex">
+                    <div class="p-2">
+                        <h3 class="card-title">Total hospitals registered ( <small>{{ totalHospitals }}</small> )</h3>
+                    </div>
+                    <div class="ml-auto p-2">
+                        <button (click)="createHospital()" class="btn waves-effect btn-rounded btn-outline-primary"> 
+                            <i class="fa fa-plus-square"></i>
+                            Create hospital
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ================================================ -->
+                <!-- Table -->
+                <!-- ================================================ -->
+                <table class="table table-hover">
+
+                    <!-- Table Header -->
+
+                        <tr>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th></th>
+                        </tr>
+
+                    <!-- Table Content -->
+                    <tbody>
+                        <tr *ngFor="let hospital of hospitals">
+                            <!-- Image -->
+                            <td class="w70">
+                                <img (click)="showModal( hospital._id )" [src]="hospital.image | image:'hospital'" class="img-50 pointer">
+                            </td>
+                            <!-- Name -->
+                            <td>
+                                <input [(ngModel)]="hospital.name" class="form-control" type="text">
+                            </td>
+                            <!-- Buttons -->
+                            <td>
+                                <button (click)="updateHospital( hospital )" class="btn btn-primary">
+                                    <i class="fa fa-save"></i>
+                                </button>
+                                
+                                <button (click)="deleteHospital( hospital )" class="btn btn-danger">
+                                    <i class="fa fa-trash-o"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Paguination buttons -->
+                <button (click)="changeFrom(-5)" class="btn btn-secondary">
+                    Previous
+                </button>
+
+                <button (click)="changeFrom(5)" class="btn btn-secondary">
+                    Next
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>

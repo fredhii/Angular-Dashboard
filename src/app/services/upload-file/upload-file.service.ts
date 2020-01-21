@@ -17,7 +17,7 @@ export class UploadFileService {
 
       formData.append( 'image', file, file.name );
 
-      xhr.onreadystatechange = function() {
+      xhr.onreadystatechange = () => {
         if ( xhr.readyState === 4 ) {
 
           if ( xhr.status === 200 ) {

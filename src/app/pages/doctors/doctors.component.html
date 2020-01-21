@@ -1,0 +1,105 @@
+<!-- ================================================ -->
+<!-- Search bar -->
+<!-- ================================================ -->
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <input #input (keyup)="searchDoctor( input.value )" type="text" class="form-control" placeholder="Search Hospital...">
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ================================================ -->
+<!-- Loading bar -->
+<!-- ================================================ -->
+<div class="row animated fadeIn" *ngIf="showloadingbar">
+    <div class="col-sm-12">
+        <div class="alert alert-warning text-center">
+            <strong>Loading...</strong>
+            <br>
+            <i class="fa fa-refresh fa-spin fa-2x"></i>
+            <br>
+            <span>Please wait</span>
+        </div>
+    </div>
+</div>
+<!-- ================================================ -->
+<!-- Table -->
+<!-- ================================================ -->
+<div class="row animated fadeIn" *ngIf="!showloadingbar">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <!-- Subtitle -->
+                <div class="d-flex">
+                    <div class="p-2">
+                        <h3 class="card-title">Total doctors registered ( <small>{{ _doctorService.totalDoctor }}</small> )</h3>
+                    </div>
+                    <div class="ml-auto p-2">
+                        <button [routerLink]="['/doctor','new']" class="btn waves-effect btn-rounded btn-outline-primary"> 
+                            <i class="fa fa-plus-square"></i>
+                            Create Doctor
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ================================================ -->
+                <!-- Table -->
+                <!-- ================================================ -->
+                <table class="table table-hover">
+
+                    <!-- Table Header -->
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Doctor</th>
+                            <th>Hospital</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <!-- Table Content -->
+                    <tbody>
+                        <tr *ngFor="let doctor of doctor">
+                            <!-- Image -->
+                            <td class="w70">
+                                <img [src]="doctor.image | image:'doctor'" class="img-50 imag-circle pointer">
+                            </td>
+                            <!-- Doctor -->
+                            <td>
+                                {{doctor.name}}
+                            </td>
+                            <!-- Hospital -->
+                            <td>
+                                {{ doctor.hospital?doctor.hospital.name: '' }}
+                            </td>
+                            <!-- Buttons -->
+                            <td>
+                                <button [routerLink]="['/doctor', doctor._id]" class="btn btn-primary">
+                                    <i class="fa fa-edit"></i>
+                                </button>
+                                
+                                <button (click)="deleteDoctor( doctor )" class="btn btn-danger">
+                                    <i class="fa fa-trash-o"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Paguination buttons -->
+                <button (click)="changeFrom(-5)" [disabled]="from === 0" class="btn btn-secondary">
+                    Previous
+                </button>
+
+                <button (click)="changeFrom(5)" [disabled]="from >= _doctorService.totalDoctor -4" class="btn btn-secondary">
+                    Next
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>

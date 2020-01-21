@@ -4,7 +4,7 @@
         <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title">Modal title</h5>
+            <h5 class="modal-title">Update Image</h5>
             <button (click)="closeModal()" type="button" class="close" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -12,8 +12,8 @@
             <div class="modal-body">
                 <img *ngIf="!imageTemp" [src]="'nothing' | image" class="w150 centert" alt="Preview">
                 <img *ngIf="imageTemp" [src]="imageTemp" class="w150 centert" alt="Preview"><br>
-                
-                <input (change)="selectImage( $event.target.files[0] )" type="file">
+
+                <input (change)="selectImage( $event.target.files[0] )" type="file" class="centert">
             </div>
             <div class="modal-footer">
             <button type="button" (click)="uploadImage()" [disabled]="!imageTemp" class="btn btn-primary">Upload Image</button>
