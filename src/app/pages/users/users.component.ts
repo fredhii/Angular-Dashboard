@@ -33,8 +33,9 @@ export class UsersComponent implements OnInit {
   showModal( id: string ) {
     this._modalUploadService.showModal( 'user', id );
   }
-
-  // Get users
+  // =============================================
+  // GET users
+  // =============================================
   loadUsers() {
 
     this.loading = true;
@@ -48,72 +49,60 @@ export class UsersComponent implements OnInit {
                     });
 
   }
-
+  // =============================================
   // Paguination
-  changeFrom( value: number) {
-
-    let from = this.from + value;
-    // console.log(from);
-
+  // =============================================
+  changeFrom( value: number ) {
+    const from = this.from + value;
     if ( from >= this.totalRegister ) {
       return;
     }
-
     if ( from < 0 ) {
       return;
     }
-
     this.from += value;
     this.loadUsers();
-
   }
-
+  // =============================================
   // Search bar
+  // =============================================
   searchUser( term: string ) {
-
-    // console.log(term);
-    if ( term.length <= 0 ) {
-      this.loadUsers();
-      return;
-    }
-
-    this.loading = true;
-
-    this._userService.searchUsers( term )
-                     .subscribe( (users: User[]) => {
-
-                      //  console.log( users );
-                      this.users = users;
-                      this.loading = false;
-
-                      });
+              if ( term.length <= 0 ) {
+                this.loadUsers();
+                return;
+              }
+              this.loading = true;
+              this._userService.searchUsers( term )
+                              .subscribe( (users: User[]) => {
+                                this.users = users;
+                                this.loading = false;
+                                });
   }
-
+  // =============================================
   // Erase User
+  // =============================================
   eraseUser( user: User ) {
-    if ( user._id === this._userService.user._id ) {
-      swal('Incorrect', 'You cannot delete yourself', 'error');
-      return;
-    }
-    swal({
-      title: 'Are you sure?',
-      text: 'Once deleted, you will not be able to recover ' + user.name,
-      icon: 'warning',
-      buttons: true,
-      dangerMode: true,
-    })
-    .then(willDelete => {
-
-      if (willDelete) {
-
-        this._userService.eraseUser( user._id )
-                        .subscribe( response => {
-                          console.log( response );
-                          this.loadUsers();
-                          this.changeFrom(-5);
-                        });
-      }
-    });
+              if ( user._id === this._userService.user._id ) {
+                swal('Incorrect', 'You cannot delete yourself', 'error');
+                return;
+              }
+              swal({
+                title: 'Are you sure?',
+                text: 'Once deleted, you will not be able to recover ' + user.name,
+                icon: 'warning',
+                buttons: true,
+                dangerMode: true,
+              })
+              .then(willDelete => {
+                      if (willDelete) {
+                        this._userService.eraseUser( user._id )
+                                        .subscribe( response => {
+                                          console.log( response );
+                                          this.loadUsers();
+                                          this.changeFrom(-5);
+                                        });
+                        }
+              });
   }
 
   // Save User Info from Maintenance

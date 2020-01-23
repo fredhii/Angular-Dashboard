@@ -4,7 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ModalUploadService } from '../components/modal-upload/modal-upload.service';
 
 import {
-  LoginGuardService,
+  LoginGuard,
+  AdminGuard,
   SettingsService,
   SidebarService,
   SharedService,
@@ -21,7 +22,8 @@ import {
     HttpClientModule
   ],
   providers: [
-    LoginGuardService,
+    LoginGuard,
+    AdminGuard,
     SettingsService,
     SidebarService,
     SharedService,

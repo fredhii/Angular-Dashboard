@@ -28,6 +28,7 @@ import { ModalUploadComponent } from '../components/modal-upload/modal-upload.co
 import { HospitalComponent } from './hospital/hospital.component';
 import { DoctorsComponent } from './doctors/doctors.component';
 import { DoctorComponent } from './doctors/doctor.component';
+import { SearchComponent } from './search/search.component';
 
 
 
@@ -47,7 +48,8 @@ import { DoctorComponent } from './doctors/doctor.component';
         ModalUploadComponent,
         HospitalComponent,
         DoctorsComponent,
-        DoctorComponent
+        DoctorComponent,
+        SearchComponent
     ],
     exports: [
         DashboardComponent,

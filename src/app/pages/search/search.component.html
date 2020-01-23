@@ -1,0 +1,104 @@
+<div class="row animated fadeInDown">
+
+    <!-- =================================================== -->
+    <!-- User -->
+    <!-- =================================================== -->
+    <div class="col-4">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title">User</h4>
+
+                
+                <table class="table table-hover">
+                    <tbody>
+                        <tr *ngFor="let user of user" [routerLink]="['/user']" class="pointer">
+                            <td>
+                                <img [src]="user.image | image" class="img-50">
+                            </td>
+                            <td>{{ user.name }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- No data found alert -->
+                <div [hidden]="user.length > 0" class="alert alert-info" role="alert">
+                    <i class="fa fa-times"></i>
+                    No match here !!!
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- =================================================== -->
+    <!-- Doctor -->
+    <!-- =================================================== -->
+    <div class="col-4">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title">Doctor</h4>
+                
+                <table class="table table-hover">
+                    <tbody>
+                        <tr *ngFor="let doctor of doctor">
+                            <td>
+                                <img [src]="doctor.image | image:'doctor'" class="img-50">
+                            </td>
+                            <td>{{doctor.name}}</td>
+                            <td>
+                                <button class="btn btn-primary" [routerLink]="['/doctor', doctor._id]">
+                                    <i class="fa fa-edit"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- No data found alert -->
+                <div [hidden]="doctor.length > 0" class="alert alert-info" role="alert">
+                    <i class="fa fa-times"></i>
+                    No match here !!!
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- =================================================== -->
+    <!-- Hospital -->
+    <!-- =================================================== -->
+    <div class="col-4">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title">Hospital</h4>
+                
+                <table class="table table-hover">
+                    <tbody>
+                        <tr *ngFor="let hospital of hospital">
+                            <td>
+                                <img [src]="hospital.image | image:'hospital'" class="img-50">
+                            </td>
+                            <td>{{hospital.name}}</td>
+                            <td>
+                                <button class="btn btn-primary" [routerLink]="['/hospital']">
+                                    <i class="fa fa-edit"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- No data found alert -->
+                <div [hidden]="hospital.length > 0" class="alert alert-info" role="alert">
+                    <i class="fa fa-times"></i>
+                    No match here !!!
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
