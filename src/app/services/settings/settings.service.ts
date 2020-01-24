@@ -21,7 +21,7 @@ export class SettingsService {
   }
 
   loadSettings() {
-    if( localStorage.getItem('settings')) {
+    if ( localStorage.getItem('settings')) {
       this.settings = JSON.parse(localStorage.getItem('settings'));
       // console.log('localStorage Saved!');
       this.applyTheme( this.settings.theme );
@@ -33,7 +33,7 @@ export class SettingsService {
 
   applyTheme( theme: string) {
 
-        let url = `assets/css/colors/${ theme }.css`;
+        const url = `assets/css/colors/${ theme }.css`;
         this._document.getElementById('theme').setAttribute('href', url);
         this.settings.theme = theme;
         this.settings.themeUrl = url;

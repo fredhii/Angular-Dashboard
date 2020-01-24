@@ -12,8 +12,8 @@ export class UploadFileService {
 
     return new Promise( (resolve, reject) => {
 
-      let formData = new FormData();
-      let xhr = new XMLHttpRequest();
+      const formData = new FormData();
+      const xhr = new XMLHttpRequest();
 
       formData.append( 'image', file, file.name );
 
@@ -31,7 +31,7 @@ export class UploadFileService {
         }
       };
 
-      let url = URL_SERVICES + '/upload/' + type + '/' + id;
+      const url = URL_SERVICES + '/upload/' + type + '/' + id;
 
       xhr.open( 'PUT', url, true );
       xhr.send( formData );

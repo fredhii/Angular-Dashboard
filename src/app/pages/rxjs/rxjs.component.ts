@@ -15,12 +15,12 @@ export class RxjsComponent implements OnInit, OnDestroy {
 
   constructor() {
 
-    //Retry
+    // Retry
     // this.returnObservable().pipe(
     //   retry(2)
     // )
     this.suscription = this.returnObservable()
-    .subscribe( 
+    .subscribe(
       number => console.log( 'Subs', number ),
       error => console.error( 'Error in obs', error),
       () => console.log( 'Observer Finish job!' )
@@ -36,10 +36,10 @@ export class RxjsComponent implements OnInit, OnDestroy {
   }
 
   returnObservable(): Observable<any> {
-    
-    //Create Observable
+
+    // Create Observable
     return new Observable( (observer: Subscriber<any>) => {
-      
+
       let counter = 0;
 
       const interval = setInterval ( () => {
@@ -57,14 +57,14 @@ export class RxjsComponent implements OnInit, OnDestroy {
         //   clearInterval( interval );
         //   //Stops observable
         //   observer.complete();
-        // }  
+        // }
         // if (counter === 2) {
         //   // clearInterval( interval );
         //   observer.error('Error test!');
         // }
 
-      }, 1000)
-    }).pipe( 
+      }, 1000);
+    }).pipe(
       map( resp => resp.value),
       filter( (value, index ) => {
 

@@ -26,6 +26,28 @@ export class UserService {
    }
 
   // ================================================
+  // Renew Token
+  // ================================================
+  renewToken() {
+    let url = URL_SERVICES + '/login/renewtoken';
+    url += '?token=' + this.token;
+
+    return this.http.get(url)
+                    .pipe(map( (response: any ) => {
+                      this.token = response.token;
+                      // NOTE: Centralize token as a function
+                      localStorage.setItem('token', this.token);
+                      console.log('New token');
+                      return true;
+                    }))
+                    .pipe(catchError( err => {
+                      this.router.navigate(['/login']);
+                      swal('Error', 'Could not renew token' , 'error');
+                      return throwError(err);
+                    }));
+  }
+
+  // ================================================
   // Check if logged In
   // ================================================
   alreadyLogedin() {
@@ -77,7 +99,7 @@ export class UserService {
   // ================================================
   loginGoogle( token ) {
 
-    let url = URL_SERVICES + '/login/google';
+    const url = URL_SERVICES + '/login/google';
 
     return this.http.post( url, {token} )
     .pipe(map(( response: any ) => {
@@ -97,7 +119,7 @@ export class UserService {
       localStorage.removeItem('email');
     }
 
-    let url = URL_SERVICES + '/login';
+    const url = URL_SERVICES + '/login';
     return this.http.post( url, user )
     .pipe(map( ( response: any ) => {
       this.saveStorage(response.id, response.token, response.user, response.menu);
@@ -113,7 +135,7 @@ export class UserService {
   // ================================================
   createUser( user: User ) {
 
-    let url = URL_SERVICES + '/user';
+    const url = URL_SERVICES + '/user';
 
     return this.http.post( url, user )
                     .pipe(map( (response: any) => {
@@ -137,7 +159,7 @@ export class UserService {
     return this.http.put(url, user)
                     .pipe(map( ( response: any ) => {
                       if ( user._id === this.user._id ) {
-                        let userBD: User = response.user;
+                        const userBD: User = response.user;
                         this.saveStorage( userBD._id, this.token, userBD, this.menu );
                       }
                       swal('Success', 'User Updated', 'success' );
@@ -160,7 +182,7 @@ export class UserService {
           swal('Success', 'Image Updated', 'success');
           this.saveStorage( id, this.token, this.user, this.menu );
         })
-        .catch( response =>{
+        .catch( response => {
           console.log(response);
         });
 
@@ -169,12 +191,12 @@ export class UserService {
   // User
   // ================================================
   loadUsers( from: number = 0 ) {
-    let url = URL_SERVICES + '/user?from=' + from;
+    const url = URL_SERVICES + '/user?from=' + from;
     return this.http.get( url );
   }
 
   searchUsers( term: string ) {
-    let url = URL_SERVICES + '/search/collection/user/' + term;
+    const url = URL_SERVICES + '/search/collection/user/' + term;
     return this.http.get( url )
                     .pipe(map((response: any) => response.user));
   }

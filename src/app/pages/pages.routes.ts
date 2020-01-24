@@ -9,42 +9,32 @@ import { PagesComponent } from './pages.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
-import { LoginGuard, AdminGuard } from '../services/service.index';
 import { ProfileComponent } from './profile/profile.component';
-import { NopagefoundComponent } from '../share/nopagefound/nopagefound.component';
 import { UsersComponent } from './users/users.component';
 import { HospitalComponent } from './hospital/hospital.component';
 import { DoctorsComponent } from './doctors/doctors.component';
 import { DoctorComponent } from './doctors/doctor.component';
 import { SearchComponent } from './search/search.component';
+import { AdminGuard } from '../services/guards/admin.guard';
+import { CheckTokenGuard } from '../services/guards/check-token.guard';
 
 
 
 const pagesRoutes: Routes = [
-  {
-    path: '',
-    component: PagesComponent,
-    canActivate: [LoginGuard],
-    children: [
-      { path: 'dashboard', component: DashboardComponent, data: { title: 'Dashboard' } },
-      { path: 'progress', component: ProgressComponent, data: { title: 'Progress Bar' } },
-      { path: 'graphic1', component: Graphic1Component, data: { title: 'Doughnut Graphics' }},
-      { path: 'promesas', component: PromesasComponent, data: { title: 'Promises' }},
-      { path: 'account-settings', component: AccountSettingsComponent, data: { title: 'Theme Settings' }},
-      { path: 'rxjs', component: RxjsComponent, data: { title: 'RxJs' }},
-      { path: 'profile', component: ProfileComponent, data: { title: 'My Profile' }},
-      { path: 'search/:term', component: SearchComponent, data: { title: 'Search' }},
-
-      // Maintenance
-      { path: 'user', component: UsersComponent, canActivate: [ AdminGuard ], data: { title: 'User Maintenance' }},
-      { path: 'hospital', component: HospitalComponent, data: { title: 'Hospital Maintenance' }},
-      { path: 'doctor', component: DoctorsComponent, data: { title: 'Doctors Maintenance' }},
-      { path: 'doctor/:id', component: DoctorComponent, data: { title: 'Update Doctor' }},
-      { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
-    ]
-  },
-  // 404 page
-  { path: '**', component: NopagefoundComponent}
+    { path: 'dashboard', component: DashboardComponent, canActivate: [CheckTokenGuard] , data: { title: 'Dashboard' } },
+    { path: 'progress', component: ProgressComponent, data: { title: 'Progress Bar' } },
+    { path: 'graphic1', component: Graphic1Component, data: { title: 'Doughnut Graphics' }},
+    { path: 'promesas', component: PromesasComponent, data: { title: 'Promises' }},
+    { path: 'account-settings', component: AccountSettingsComponent, data: { title: 'Theme Settings' }},
+    { path: 'rxjs', component: RxjsComponent, data: { title: 'RxJs' }},
+    { path: 'profile', component: ProfileComponent, canActivate: [CheckTokenGuard], data: { title: 'My Profile' }},
+    { path: 'search/:term', component: SearchComponent, data: { title: 'Search' }},
+    // Maintenance
+    { path: 'user', component: UsersComponent, canActivate: [ AdminGuard, CheckTokenGuard ], data: { title: 'User Maintenance' }},
+    { path: 'hospital', component: HospitalComponent, canActivate: [CheckTokenGuard], data: { title: 'Hospital Maintenance' }},
+    { path: 'doctor', component: DoctorsComponent, canActivate: [CheckTokenGuard], data: { title: 'Doctors Maintenance' }},
+    { path: 'doctor/:id', component: DoctorComponent, canActivate: [CheckTokenGuard], data: { title: 'Update Doctor' }},
+    { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
 ];
 
 @NgModule({

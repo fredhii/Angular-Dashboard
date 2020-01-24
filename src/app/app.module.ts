@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { CommonModule, APP_BASE_HREF, LocationStrategy, HashLocationStrategy} from '@angular/common';
+import { APP_BASE_HREF, LocationStrategy, HashLocationStrategy} from '@angular/common';
 
 // Temporal
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -9,7 +9,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
 // Modules
-import {PagesModule} from './pages/pages.module'
+import { ShareModule } from './share/share.module';
 
 // Components
 import { AppComponent } from './app.component';
@@ -18,20 +18,23 @@ import { RegisterComponent } from './login/register.component';
 
 // Services
 import { ServiceModule } from './services/service.module';
+import { PagesComponent } from './pages/pages.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    PagesComponent
     ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PagesModule,
     FormsModule,
     ReactiveFormsModule,
-    ServiceModule
+    ServiceModule,
+    ShareModule
   ],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' },

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate } from '@angular/router';
-import { UserService } from 'src/app/services/service.index';
+import { UserService } from '../user/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class AdminGuard implements CanActivate {
 
   canActivate() {
 
-    if( this._userService.user.role === 'Admin' ) {
+    if ( this._userService.user.role === 'Admin' ) {
       return true;
     } else {
       console.log('Block by Admin Guard!!!!!!!');
