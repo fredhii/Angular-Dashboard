@@ -8,7 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef }
 export class IncreaserComponent implements OnInit {
 
   @ViewChild('txtProgress', {static: false}) txtProgress: ElementRef;
-  @Input('name') leyend: string = 'Leyend';
+  @Input('name') leyend = 'Leyend';
   @Input() percentage = 50;
 
   @Output() increaserValue: EventEmitter<number> = new EventEmitter();
@@ -17,15 +17,15 @@ export class IncreaserComponent implements OnInit {
 
   ngOnInit() {}
 
-  onChange( newValue : number) {
+  onChange( newValue: number) {
 
     // let elemHTML: any = document.getElementsByName('percentage') [0];
     // console.log(this.txtProgress);
 
 
-    if ( newValue >=100 ){
+    if ( newValue >= 100 ){
       this.percentage = 100;
-    } else if ( newValue <=0 ){
+    } else if ( newValue <= 0 ) {
       this.percentage = 0;
     } else {
     this.percentage = newValue;

@@ -15,6 +15,7 @@ export class ModalUploadComponent implements OnInit {
   imageTemp: string | ArrayBuffer;
 
   constructor(
+    // tslint:disable-next-line: variable-name
     public _uploadFileService: UploadFileService,
     public _modalUploadervice: ModalUploadService
   ) {}
@@ -57,8 +58,8 @@ export class ModalUploadComponent implements OnInit {
 
     this.imageUpload = file;
 
-    let reader = new FileReader();
-    let urlImageTemp = reader.readAsDataURL( file );
+    const reader = new FileReader();
+    const urlImageTemp = reader.readAsDataURL( file );
 
     reader.onloadend = () => this.imageTemp = reader.result;
 
